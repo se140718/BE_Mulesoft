@@ -8,7 +8,7 @@ import com.mulewebapi.mulewebapi.entity.ids.SaleOrderId;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Data
 @Entity
@@ -21,21 +21,13 @@ public class SaleOrder {
     @Id
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDate orderDate;
+    private Date orderDate;
 
     private String title;
 
     private String description;
 
-    private LocalDate createdByDate;
+    private Date createdByDate;
 
     private String createdBy;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdByDate = LocalDate.now();
-        if (this.createdBy == null || this.createdBy.isEmpty()) {
-            this.createdBy = "DatLHD1";
-        }
-    }
 }

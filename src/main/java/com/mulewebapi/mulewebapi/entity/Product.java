@@ -1,10 +1,9 @@
 package com.mulewebapi.mulewebapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Data
 @Entity
@@ -21,15 +20,7 @@ public class Product {
 
     private Double unitPrice;
 
-    private LocalDate createdByDate;
+    private Date createdByDate;
 
     private String createdBy;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdByDate = LocalDate.now();
-        if (this.createdBy == null || this.createdBy.isEmpty()) {
-            this.createdBy = "DatLHD1";
-        }
-    }
 }

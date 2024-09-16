@@ -5,7 +5,7 @@ import com.mulewebapi.mulewebapi.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +31,8 @@ public class ProductService {
 
         // Manually set createdByDate and createdBy if null
         if (product.getCreatedByDate() == null) {
-            product.setCreatedByDate(LocalDate.now());
+            Date currentDate = new Date(System.currentTimeMillis());
+            product.setCreatedByDate(currentDate);
         }
         if (product.getCreatedBy() == null || product.getCreatedBy().isEmpty()) {
             product.setCreatedBy("DatLHD1");

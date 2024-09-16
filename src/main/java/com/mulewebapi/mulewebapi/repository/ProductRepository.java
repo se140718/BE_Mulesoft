@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.Optional;
 
 @Repository
@@ -26,7 +26,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
                        String productName,
                        String unit,
                        Double quantityInStock,
-                       LocalDate createdByDate,
+                       Date createdByDate,
                        String createdBy);
 
     @Modifying

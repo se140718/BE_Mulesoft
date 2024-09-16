@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +32,7 @@ public class ProductService {
 
         // Manually set createdByDate and createdBy if null
         if (product.getCreatedByDate() == null) {
-            Date currentDate = new Date(System.currentTimeMillis());
-            product.setCreatedByDate(currentDate);
+            product.setCreatedByDate(LocalDate.now());
         }
         if (product.getCreatedBy() == null || product.getCreatedBy().isEmpty()) {
             product.setCreatedBy("DatLHD1");

@@ -1,9 +1,10 @@
 package com.mulewebapi.mulewebapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -20,7 +21,8 @@ public class Product {
 
     private Double unitPrice;
 
-    private Date createdByDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate createdByDate;
 
     private String createdBy;
 }

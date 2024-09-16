@@ -1,5 +1,6 @@
 package com.mulewebapi.mulewebapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mulewebapi.mulewebapi.config.LocalDateDeserializer;
@@ -8,7 +9,7 @@ import com.mulewebapi.mulewebapi.entity.ids.PurchaseOrderId;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,13 +22,14 @@ public class PurchaseOrder {
     @Id
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    private Date orderDate;
+    private LocalDate orderDate;
 
     private String title;
 
     private String description;
 
-    private Date createdByDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate createdByDate;
 
     private String createdBy;
 }

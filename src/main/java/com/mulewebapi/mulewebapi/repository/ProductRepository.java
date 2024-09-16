@@ -1,7 +1,6 @@
 package com.mulewebapi.mulewebapi.repository;
 
 import com.mulewebapi.mulewebapi.entity.Product;
-import com.mulewebapi.mulewebapi.entity.ids.ProductId;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,7 +11,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, ProductId> {
+public interface ProductRepository extends JpaRepository<Product, String> {
 
     @Query("SELECT p FROM Product p WHERE p.productCode = ?1 OR p.unitPrice = ?2")
     Optional<Product> checkProductIsExist(String productCode, Double unitPrice);

@@ -1,7 +1,6 @@
 package com.mulewebapi.mulewebapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mulewebapi.mulewebapi.entity.ids.ProductId;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,7 +9,6 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table (name = "Products")
-@IdClass(ProductId.class)
 public class Product {
     @Id
     private String productCode;
@@ -21,7 +19,6 @@ public class Product {
 
     private Double quantityInStock;
 
-    @Id
     private Double unitPrice;
 
     private LocalDate createdByDate;

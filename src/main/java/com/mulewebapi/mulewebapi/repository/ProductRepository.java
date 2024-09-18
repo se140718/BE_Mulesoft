@@ -33,7 +33,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     @Transactional
     @Query(value = "UPDATE products SET " +
             "quantity_in_stock = quantity_in_stock + ?2, " +
-            "unit_price = (quantity_in_stock * unit_price + ?2 * ?3) / 2 " +
+            "unit_price = (quantity_in_stock * unit_price + ?2 * ?3) / (quantity_in_stock + ?2) " +
             "WHERE product_code = ?1",
             nativeQuery = true)
     void updateProductByPurchaseOrder(String productCode, Double quantity, Double purchasePrice);
